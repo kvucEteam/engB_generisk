@@ -1,0 +1,99 @@
+	.FormsContainer, .generator_container{
+		color:black;
+		max-width: 2000px;
+	}
+
+	.embed-responsive{
+		color:white;
+		margin: 2px; 
+	}
+/*
+#PlayerVideoView{overflow:hidden;}  
+*/
+#PlayerVideoView img{width: 100%;}
+
+#load_video{margin-top: 5px;}
+
+#HeaderWrap{padding: 10px;}
+.InputHeader{font-weight: 600; padding-top: 15px;}
+.QuestionField{margin: 10px;}
+.EventForm{padding: 10px; margin-right: 50px;}
+.EventForm b {margin-right: 20px;}
+.EventFormBkColor{background-color: #F0F0F0; padding: 10px;}
+
+.EventQuestion{}
+.EventInfo{display: none;}
+
+.class_TimeStampForm{display: inline-block;}
+.TimeStampForm{border: 1px solid #C0C0C0; padding: 10px; margin: 5px; display: none;}
+.TimeStampForm b {margin-right: 20px;}
+.TimeStampForm > .usrbutton{margin-right: 65px; margin-bottom: 10px;}
+#JsonOutput{font-weight: 600;}
+#JsonVideoInput{font-weight: 600;}
+.usrbutton{margin-left: 10px; margin-top: 10px;}
+.addfieldWrap{margin-left: 34%;}
+
+.QuestionWrapper{/* display: none; */}
+.QuestionWrapperButton input{margin-left: 20px;}
+.QuestionLetter{padding-left: 5px; padding-right: 5px;}
+
+.addform{margin-right: 0px;}
+.removeform{margin-right: 0px;}
+
+.QFTheading{width: 50%;}
+.QFAheading{margin-right: 20%;}
+
+.hide{display: none;}
+.dhide{}  /* dummy hide */
+.dshow{display: block}
+
+#PagerWrapper{margin-left: auto; margin-right: auto; width: 900px;}
+.PagerClass{display: inline-block;}
+#PagerContainer{display: inline-block;}
+#PagerContainer ul {padding: 0px;}
+#PagerContainer ul li {display: inline;}
+.PagerButton{margin: 2px;}
+.AddNewPageButton{margin-right: 90px;} 
+
+.b-red { }
+.b-blue{border: 1px solid #00F; }
+
+.ml5 {margin-left: 5px}
+.ml10 {margin-left: 10px}
+.ml40 {margin-left: 40px}
+.ml60 {margin-left: 60px}
+.mr25 {margin-right: 25px}
+
+.w100 {width: 100%;}
+.w75 {width: 75%;}
+.w50 {width: 50%;}
+.w25 {width: 25%;}
+.w20 {width: 20%;}
+.m10 {margin: 10px;}
+.m5  {margin: 5px;}
+.mb10{margin-bottom: 10px;}
+.p10 {padding: 10px;}
+.p5  {padding: 5px;}
+
+.right{float: right;}
+.left{float: left;}
+.clear{clear: both;}
+.bottom{position: relative; bottom: 0px;}
+
+.bgc-C0C0C0{background-color: #C0C0C0;}
+.bgc-E0E0E0{background-color: #E0E0E0;}
+
+.red{color: #F00;}
+
+.TimestampForm_container{
+	padding:50px;
+}
+
+.video_tekst{
+	color:black;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 150px;
+  background-color: white;
+}
