@@ -1,0 +1,416 @@
+{
+    "startFrameTitle": "Videoquiz i fældningsreaktioner",
+    "startButtonTitle": "Start fældningsquiz",
+    "EmbedURL": "https://www.youtube.com/embed/9N462_3GYg0",
+    "WatchURL": "https://www.youtube.com/watch?v=9N462_3GYg0",
+    "startFrameText": "Fældningsreaktioner - saltes fældning",
+    "QuizData": [
+        {
+            "Index": 0,
+            "TimeStamp": [
+                {
+                    "name": "mm",
+                    "value": "1"
+                },
+                {
+                    "name": "ss",
+                    "value": "2"
+                }
+            ],
+            "EventForm": [
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 1"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 1 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 2 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 3 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 4 - false"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 1"
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 2"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 5 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 6 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 7 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 8 - false"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 2"
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 3"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 9 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 10 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 11 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 12 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 3"
+                    }
+                ]
+            ]
+        },
+        {
+            "Index": 1,
+            "TimeStamp": [
+                {
+                    "name": "mm",
+                    "value": "2"
+                },
+                {
+                    "name": "ss",
+                    "value": "4"
+                }
+            ],
+            "EventForm": [
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioInformation"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": ""
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": "INFORMATION 1"
+                    },
+                    {
+                        "name": "Question",
+                        "value": ""
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": ""
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": ""
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 4"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 13 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 14 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 15 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 16 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 4"
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioInformation"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": ""
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": "INFORMATION 2"
+                    },
+                    {
+                        "name": "Question",
+                        "value": ""
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": ""
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": ""
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 5"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 17 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 18 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 19 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 20 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 5"
+                    }
+                ]
+            ]
+        },
+        {
+            "Index": 2,
+            "TimeStamp": [
+                {
+                    "name": "mm",
+                    "value": "3"
+                },
+                {
+                    "name": "ss",
+                    "value": "6"
+                }
+            ],
+            "EventForm": [
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 5"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 21 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 22 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 23 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 24 - false"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 5"
+                    }
+                ],
+                [
+                    {
+                        "name": "valg",
+                        "value": "RadioQuestion"
+                    },
+                    {
+                        "name": "EventQuestion",
+                        "value": "SPØRGSMÅL 6"
+                    },
+                    {
+                        "name": "EventInfo",
+                        "value": ""
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 25 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 26 - true"
+                    },
+                    {
+                        "name": "Csvar",
+                        "value": "on"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 27 - false"
+                    },
+                    {
+                        "name": "Question",
+                        "value": "SVAR 28 - false"
+                    },
+                    {
+                        "name": "EventFeedback",
+                        "value": "FEEDBACK 6"
+                    }
+                ]
+            ]
+        }
+    ]
+}

@@ -595,6 +595,39 @@ function QuestionWrapperButtonControl(Selector) {
 }
 
 
+function ReturnAjaxData(Type, Url, Async, DataType) {
+    $.ajax({
+        type: Type,
+        url: Url,
+        async: Async,
+        dataType: DataType,
+        success: function(Data) {
+            console.log("ReturnAjaxData: " + JSON.stringify(Data));
+            jsonData = JSON.parse(JSON.stringify(Data));
+            // JsonExternalData = JSON.parse(JSON.stringify(Data));
+            // console.log("HowWhyData: " + HowWhyData); 
+        }
+    }).fail(function() {
+        alert("Ajax failed to fetch data - the requested data might not exist...");
+    });
+}
+
+function ReturnURLPerameters(UlrVarObj){
+    var UrlVarStr = window.location.search.substring(1);
+    console.log("ReturnURLPerameters - UrlVarStr: " + UrlVarStr);
+    var UrlVarPairArray = decodeURIComponent(UrlVarStr).split("&");  // decodeURIComponent handles %26" for the char "&" AND "%3D" for the char "=".
+    console.log("ReturnURLPerameters - UrlVarPairArray: " + UrlVarPairArray);
+    for (var i in UrlVarPairArray){
+        var UrlVarSubPairArray = UrlVarPairArray[i].split("=");  // & = %3D
+        if (UrlVarSubPairArray.length == 2){
+            UlrVarObj[UrlVarSubPairArray[0]] = UrlVarSubPairArray[1];
+        }
+    }
+    console.log("ReturnURLPerameters - UlrVarObj: " + JSON.stringify( UlrVarObj ));
+    return UlrVarObj;
+}
+
+
 //######################################################################################
 //                              Regenerate form-state
 //###################################################################################### 
@@ -616,111 +649,142 @@ function ReturnObjKeyNames(Obj) {
 }
 
 // MARK
-function ReGenerateForm(json, Selector) {
+function ReGenerateForm(Selector) {
 
-        $(Selector).css("color", "#F00"); // SET EN BRED BORDER, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
+        window.jsonData = null;
 
-        console.log("json: " + JSON.stringify(json));
+        var UlrVarObj = {"file" : ""};   // Define a default file-refrence (empty) ---> "QuizData.json"
+        UlrVarObj = ReturnURLPerameters(UlrVarObj);  // Get URL file perameter.
+        console.log("ReGenerateForm - UlrVarObj: " + JSON.stringify(UlrVarObj) + ", UlrVarObj.file: " + UlrVarObj.file);
 
-        $("#video_startFrameTitle").val(json.startFrameTitle);
-        $("#video_startFrameText").val(json.startFrameText);
-        $("#video_startButtonTitle").val(json.startButtonTitle);
-        $("#video_url").val(json.URL);
+        if (UlrVarObj.file !== ""){ // Check if a filenumber has been refrenced through the URL
+            ReturnAjaxData("GET", "json/VideoData"+String(UlrVarObj.file)+".json", false, "json");
+            console.log("ReGenerateForm - Filelocation: json/VideoData"+String(UlrVarObj.file)+".json");
+            console.log("ReGenerateForm - jsonData: " + JSON.stringify(jsonData));
+        }
 
-        console.log("json.startFrameTitle: " + json.startFrameTitle + ", json.startButtonTitle: " + json.startButtonTitle + ", json.URL: " + json.URL);
+        if (jsonData !== null){ // If a valid file has been refrenced then...
 
-        var QD = json.QuizData;
-        console.log('QD: ' + QD);
+            var json = jsonData;
+            // json = JSON.parse(JSON.stringify(jsonData)); // Copy the the template-object "jsonData"
+
+            // $(Selector).css("color", "#F00"); // SAET ROED TEKST, SAA MAN KAN SE AT FUNKTIONEN ER AKTIV!!!
+
+            console.log("ReGenerateForm - json: " + JSON.stringify(json));
+
+            // $("#video_url").val(json.URL);
+            $("#video_url").val(json.EmbedURL);   //  NEW: NOV 2015
+            $("#video_startFrameTitle").val(json.startFrameTitle);
+            $("#video_startFrameText").val(json.startFrameText);
+            $("#video_startButtonTitle").val(json.startButtonTitle);
+
+            console.log("json.startFrameTitle: " + json.startFrameTitle + ", json.startButtonTitle: " + json.startButtonTitle + ", json.URL: " + json.URL);
+
+            var QD = json.QuizData;
+            console.log('QD: ' + QD);
 
 
-        // Assume JS is array
-        for (var key in QD) {
+            // Assume JS is array
+            for (var key in QD) {
 
-            if (typeof(QD[key].TimeStamp) !== "undefined") {
-                if (key === 0) { // if Selector is empty - eg. not prior TimeStampForms...
-                    $(Selector).html(TimeStampForm);
-                    console.log('#####  TRUE - key: ' + key);
-                } else { // if Selector already has one or more TimeStampForms...
-                    $(Selector + " .TimeStampForm:last-child").after(TimeStampForm);
-                    console.log('#####  FALSE - key: ' + key);
-                }
-                // Remove all QuestionFields from the newly made TimeStampForms:
-                $(".TimeStampForm:last-child .QuestionField").remove();
+                if (typeof(QD[key].TimeStamp) !== "undefined") {
+                    // if (key === 0) { // if Selector is empty - eg. not prior TimeStampForms...
+                    if (key == 0) { // if Selector is empty - eg. not prior TimeStampForms...   //  NEW: NOV 2015
+                        $(Selector).html(TimeStampForm);
+                        console.log('#####  TRUE - key: ' + key);
+                    } else { // if Selector already has one or more TimeStampForms...
+                        $(Selector + " .TimeStampForm:last-child").after(TimeStampForm);
+                        console.log('#####  FALSE - key: ' + key);
+                    }
+                    // Remove all QuestionFields from the newly made TimeStampForms:
+                    $(".TimeStampForm:last-child .QuestionField").remove();
 
 
 
-                console.log('----- QD[key].TimeStamp.length: ' + QD[key].TimeStamp.length);
-                if (QD[key].TimeStamp.length > 0) {
-                    for (var Tkey in QD[key].TimeStamp) {
-                        var TObj = QD[key].TimeStamp[Tkey];
-                        $(".TimeStampForm:last-child select[name='" + TObj.name + "']").val(TObj.value);
-                        console.log("TObj.name: " + TObj.name + ", TObj.value: " + TObj.value);
-                    } // END for
-                } // END if
-
-                if (typeof(QD[key].EventForm) !== "undefined") {
-
-                    console.log('----- QD[key].EventForm.length: ' + QD[key].EventForm.length);
-
-                    if (QD[key].EventForm.length > 0) {
-
-                        for (var key1 in QD[key].EventForm) { // Each key1 is an EventForm
-                            if (key1 > 0) {
-                                $(".TimeStampForm:last-child .EventForm:last-child").after(EventForm);
-
-                                // Remove all QuestionFields from the newly made TimeStampForms:
-                                $(".TimeStampForm:last-child .EventForm:last-child .QuestionField").remove();
-                            }
-
-                            var QFWrap = $(".TimeStampForm:last-child .EventForm:last-child .QuestionFieldWrapper");
-
-                            var Wrap = $(".TimeStampForm:last-child .EventForm:last-child");
-
-                            for (var key2 in QD[key].EventForm[key1]) { // Each key2 is an input-tag
-                                var Obj = QD[key].EventForm[key1][key2];
-
-                                if (Obj.name == "Question") {
-                                    // Append a newly created QuestionField to the current EventForm for each time
-                                    // an input-field "Question" is incountered. 
-                                    $(QuestionField).appendTo(QFWrap);
-                                    $("div:last-child input[name='Question']", QFWrap).val(Obj.value);
-                                }
-
-                                if (Obj.name == "EventHeader") {
-                                    $("input[name='EventHeader']", Wrap).val(Obj.value);
-                                    // console.log("==== TEXT: " + $("div input[name='EventHeader']", Wrap).parent().get(0).tagName );
-                                }
-
-                                if (Obj.name == "EventInfo") {
-                                    $("textarea[name='EventInfo']", Wrap).val(Obj.value);
-                                }
-
-                                if (Obj.name == "EventFeedback") {
-                                    $("textarea[name='EventFeedback']", Wrap).val(Obj.value);
-                                }
-
-                                if (Obj.name == "Rsvar") {
-                                    $("div:last-child input[name='Rsvar']", QFWrap).prop('checked', true);
-                                }
-
-                                if (Obj.name == "Csvar") {
-                                    $("div:last-child input[name='Csvar']", QFWrap).prop('checked', true);
-                                }
-
-                                if (Obj.name == "valg") { // The if-statement makes it run only once pr EventForm:
-                                    $("input[name='valg'][value='" + Obj.value + "']", Wrap).prop('checked', true);
-                                }
-
-                                console.log("key1: " + key1 + ", key2: " + key2 +
-                                    "\nObj: " + JSON.stringify(Obj));
-                            } // END for
-
-                            // SetDualSwitchState(Wrap); // Set all DualSwitchState to match the selected states.
+                    console.log('----- QD[key].TimeStamp.length: ' + QD[key].TimeStamp.length);
+                    if (QD[key].TimeStamp.length > 0) {
+                        for (var Tkey in QD[key].TimeStamp) {
+                            var TObj = QD[key].TimeStamp[Tkey];
+                            $(".TimeStampForm:last-child select[name='" + TObj.name + "']").val(TObj.value);
+                            console.log("TObj.name: " + TObj.name + ", TObj.value: " + TObj.value);
                         } // END for
                     } // END if
-                } // END if EventForm
-            } // END if TimeStamp
-        } // END for
+
+                    if (typeof(QD[key].EventForm) !== "undefined") {
+
+                        console.log('----- QD[key].EventForm.length: ' + QD[key].EventForm.length);
+
+                        if (QD[key].EventForm.length > 0) {
+
+                            for (var key1 in QD[key].EventForm) { // Each key1 is an EventForm
+                                if (key1 > 0) {
+                                    $(".TimeStampForm:last-child .EventForm:last-child").after(EventForm);
+
+                                    // Remove all QuestionFields from the newly made TimeStampForms:
+                                    $(".TimeStampForm:last-child .EventForm:last-child .QuestionField").remove();
+                                }
+
+                                var QFWrap = $(".TimeStampForm:last-child .EventForm:last-child .QuestionFieldWrapper");
+
+                                var Wrap = $(".TimeStampForm:last-child .EventForm:last-child");
+
+                                for (var key2 in QD[key].EventForm[key1]) { // Each key2 is an input-tag
+                                    var Obj = QD[key].EventForm[key1][key2];
+
+                                    if (Obj.name == "EventQuestion") {   //  NEW: NOV 2015
+                                        $("textarea[name='EventQuestion']", Wrap).val(Obj.value);
+                                    }
+
+                                    if (Obj.name == "Question") {
+                                        // Append a newly created QuestionField to the current EventForm for each time
+                                        // an input-field "Question" is incountered. 
+                                        $(QuestionField).appendTo(QFWrap);
+                                        $("div:last-child input[name='Question']", QFWrap).val(Obj.value);
+                                    }
+
+                                    if (Obj.name == "EventHeader") {
+                                        $("input[name='EventHeader']", Wrap).val(Obj.value);
+                                        // console.log("==== TEXT: " + $("div input[name='EventHeader']", Wrap).parent().get(0).tagName );
+                                    }
+
+                                    if ((Obj.name == "EventInfo") && (Obj.value !== "")) {
+                                        $("textarea[name='EventQuestion']", Wrap).hide();  
+                                        $(".QuestionWrapper", Wrap).hide(); 
+                                        $("textarea[name='EventInfo']", Wrap).show();
+                                        $("textarea[name='EventInfo']", Wrap).val(Obj.value);
+                                    }
+
+                                    if (Obj.name == "EventFeedback") {
+                                        $("textarea[name='EventFeedback']", Wrap).val(Obj.value);
+                                    }
+
+                                    if (Obj.name == "Rsvar") {
+                                        $("div:last-child input[name='Rsvar']", QFWrap).prop('checked', true);
+                                    }
+
+                                    if (Obj.name == "Csvar") {
+                                        $("div:last-child input[name='Csvar']", QFWrap).prop('checked', true);
+                                    }
+
+                                    if (Obj.name == "valg") { // The if-statement makes it run only once pr EventForm:
+                                        $("input[name='valg'][value='" + Obj.value + "']", Wrap).prop('checked', true);
+                                    }
+
+                                    console.log("key1: " + key1 + ", key2: " + key2 +
+                                        "\nObj: " + JSON.stringify(Obj));
+                                } // END for
+
+                                // SetDualSwitchState(Wrap); // Set all DualSwitchState to match the selected states.
+                            } // END for
+                        } // END if
+                    } // END if EventForm
+                } // END if TimeStamp
+            } // END for
+
+            Pager("#PagerContainer", "#FormsContainer > div", "Pager");  //  NEW: NOV 2015
+
+        } // END if jsonData !== null
+
     } // END function
 
 
@@ -737,7 +801,7 @@ console.log("ReturnYoutubeVidId watch : " + ReturnYoutubeVidId("https://www.yout
 function ReplicateVideoInputFormat(json) {
 
 
-        console.log("json: " + JSON.stringify(json));
+        console.log("ReplicateVideoInputFormat - json: " + JSON.stringify(json));
 
 
         // Video JSON-object-template-format by ATO:
@@ -786,9 +850,9 @@ function ReplicateVideoInputFormat(json) {
 
             var Stop = JSON.parse(JSON.stringify(Tstop)); // Copy the the template-object "Tstop"
 
-            var tt;
-            var mm;
-            var ss;
+            var tt = 0;
+            var mm = 0;
+            var ss = 0;
 
             if (typeof(QD[key].TimeStamp) !== "undefined") {
 
@@ -796,11 +860,11 @@ function ReplicateVideoInputFormat(json) {
                 if (QD[key].TimeStamp.length > 0) {
                     for (var Tkey in QD[key].TimeStamp) {
                         var TObj = QD[key].TimeStamp[Tkey];
-                        // if (TObj.name == "tt") tt = parseInt(TObj.value);
+                        // if (TObj.name == "tt") tt = parseInt(TObj.value);  // NOT IN USE!!!
                         if (TObj.name == "mm") mm = parseInt(TObj.value);
                         if (TObj.name == "ss") ss = parseInt(TObj.value);
-                        console.log("TObj.name: " + TObj.name + ", TObj.value: " + TObj.value);
-                        console.log("tt: " + tt + ", mm: " + mm + ", ss: " + ss);
+                        console.log("ReplicateVideoInputFormat - TObj.name: " + TObj.name + ", TObj.value: " + TObj.value + ", typeof(TObj.value): " + typeof(TObj.value));
+                        console.log("ReplicateVideoInputFormat - tt: " + tt + ", mm: " + mm + ", ss: " + ss);
                     } // END for
                 } // END if
 
@@ -1175,7 +1239,7 @@ $(document).ready(function() {
             // ================================
 
             // VIGTIGT: Version 15 virker med det gamle data format, hvor video-info IKKE er med!
-            // ReGenerateForm(JS, "#FormsContainer");
+            ReGenerateForm("#FormsContainer");
 
 
 }); // END $(document).ready()
