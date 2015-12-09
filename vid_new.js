@@ -194,6 +194,7 @@ function setupplayer() {
             'controls': 0,
             'showinfo': 0,
             'modestbranding': 1,
+            'rel': 0,
             'autoplay': false,
             wmode: 'transparent',
             allowFullScreen: false
