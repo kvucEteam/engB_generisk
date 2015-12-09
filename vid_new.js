@@ -190,10 +190,13 @@ function setupplayer() {
             'id': 'ytPlayer',
             'enablejsapi': 1,
             'allowScriptAccess': 'always',
+            'mediaPlaybackRequiresUserAction': false,
             'version': 3,
             'controls': 0,
             'showinfo': 0,
             'modestbranding': 1,
+            'html5':1,
+            'playsinline':1,
             'rel': 0,
             'autoplay': false,
             wmode: 'transparent',
@@ -243,7 +246,7 @@ function timerCheck() {
     //Gør overlay og timebar responsive:
     var embed_height = $(".embed-responsive").css("height");
     $("#overlay").css("height", embed_height); //                    $("#time_bar").css("width", player.getCurrentTime() * 10 + "px");
-    $("#time_bar").css("width", (player.getCurrentTime() / player.getDuration()) * window.innerWidth);
+   $("#time_bar").css("width", (player.getCurrentTime() / player.getDuration()) * $(".embed-responsive-16by9").width());
 
     //Udregn minutter og sekunder til timebar:
     var s = playTime - (m * 60);
@@ -307,8 +310,8 @@ function introscreen() {
             $("#overlay").unbind();
         });
 
-        if (navigator.platform.indexOf("iPad") != -1 || navigator.platform.indexOf("iPhone") != -1) {
-
+            if (navigator.platform.indexOf("iPad") != -1 || navigator.platform.indexOf("iPhone") != -1) {
+resumeVideo();
         } else {
             resumeVideo();
         }
