@@ -362,9 +362,9 @@ function stop_event(tal, taeller) {
         }
     }
     if (spm.eventtype == "info") {
-        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "   (Information)</h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Continue</div>");
+        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "   (Information)</h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
     } else {
-        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Continue</div>");
+        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
 
     }
     $(".btn_videre").hide();
@@ -474,8 +474,8 @@ function feedback() {
     //tween in feedback: 
     $(".svarcontainer").delay(2000).fadeOut(1000, function() {
         $(".spm_tekst").fadeOut(0);
-        $(".container_tekst").append("<div class='feedback'><div class='h3'>" + spm.feedback + "</div><div class = 'h4'><div class='correct_answers btn-success'>Correct answer(s): </div>" + correct_answers + "<br/></div>");
-        $(".popud").append("<div class ='btn btn-default btn-lg introknap btn_videre'>Continue</div>");
+        $(".container_tekst").append("<div class='feedback'><div class='h3'>" + spm.feedback + "</div><div class = 'h4'><div class='correct_answers btn-success'>Rigtige svar: </div>" + correct_answers + "<br/></div>");
+        $(".popud").append("<div class ='btn btn-default btn-lg introknap btn_videre'>Fortsæt</div>");
         $(".feedback").fadeOut(0);
         $(".feedback").fadeIn(1000);
 
@@ -544,7 +544,7 @@ function next_event() {
 function slutFeedback() {
     //console.log("slut");
     $("#overlay").unbind();
-    $(".popud").html("<h3 class = 'forfra'>The quiz is at an end. <br>You answered correctly on " + total_score + " of " + total_spm + " questions.</h3><div class='btn btn-default btn-lg forfra_knap'>Try again</div><div class='btn btn-default btn-lg continue_film'>Watch the rest of the film</div>");
+    $(".popud").html("<h3 class = 'forfra'>Quizzen er færdig. <br>Du har svaret rigtigt på " + total_score + " ud af " + total_spm + " spørgsmål.</h3><div class='btn btn-default btn-lg forfra_knap'>Prøv igen</div><div class='btn btn-default btn-lg continue_film'>Se resten af videoen</div>");
     $(".forfra_knap").click(function() {
         //console.log ("ost");
         location.reload();
