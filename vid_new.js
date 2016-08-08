@@ -282,7 +282,7 @@ function timerCheck() {
             $('#time').html(m + ":" + dec_s + "<span style ='color:#bbb'>/" + total_spille_tid + "  </span>(Quiz in " + tid_min + ":" + tid_sek + ")");
         }
     } else {
-        $('#time').html("Video paused");
+        $('#time').html("Video på pause");
     }
 
     //console.log(playTime + "," + timestamp_Array[runde] + ", " + player.getPlaybackRate());
@@ -362,9 +362,9 @@ function stop_event(tal, taeller) {
         }
     }
     if (spm.eventtype == "info") {
-        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "   (Information)</h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
+        $(".popud").html("<h5 class='score'>Stop nummer " + (runde + 1) + "/" + stops.length + "   (Information)</h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
     } else {
-        $(".popud").html("<h5 class='score'>Stop number " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspCorrect answers: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
+        $(".popud").html("<h5 class='score'>Stop nummer " + (runde + 1) + "/" + stops.length + "&nbsp&nbsp&nbsp&nbsp&nbspKorrekte svar: <span class='score_num'>" + total_score + "</span></h5><div class='container_tekst'><div class='h4 spm_tekst'>" + tekst + "</h4><div class ='svarcontainer'>" + options_text + "</div></div></div><div class='btn btn-default btn-lg btn_videre'>Fortsæt</div>");
 
     }
     $(".btn_videre").hide();

@@ -176,3 +176,7 @@ table {
 .score, .spm_tekst, .correctliste {
     color:white;
 }
+
+.continue_film {
+    margin-top:60px;
+}
